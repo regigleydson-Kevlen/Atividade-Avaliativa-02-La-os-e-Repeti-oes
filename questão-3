@@ -1,0 +1,42 @@
+n = int(input("Digite a quantidade de números consecutivos: "))
+
+consecutivos = []
+num = 2
+
+while len(consecutivos) < n:
+    fatores = []
+
+    if num > 1:
+        if num == 2:
+            fatores.append(num)
+        elif num % 2 != 0:
+            is_prime = True
+            for i in range(3, int(num**0.5) + 1, 2):
+                if num % i == 0:
+                    is_prime = False
+                    break
+            if is_prime:
+                fatores.append(num)
+    
+    fatores_primos = []
+    for i in range(2, num):
+        if num % i == 0:
+            if i > 1:
+                if i == 2:
+                    fatores_primos.append(i)
+                elif i % 2 != 0:
+                    is_prime = True
+                    for j in range(3, int(i**0.5) + 1, 2):
+                        if i % j == 0:
+                            is_prime = False
+                            break
+                    if is_prime:
+                        fatores_primos.append(i)
+    
+    if len(fatores_primos) == 2:
+        if (num // fatores_primos[0]) in fatores_primos:
+            consecutivos.append(num)
+    
+    num += 1
+
+print(f"Os primeiros {n} números consecutivos com exatamente dois fatores primos são: {consecutivos}")
