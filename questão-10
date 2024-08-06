@@ -1,0 +1,41 @@
+import sys
+
+PALAVRA_CHAVE = 'waifu'
+DICA = 'anime'
+
+palavra = PALAVRA_CHAVE.upper()
+dica = DICA.upper()
+erro = 0
+nova = '_' * len(palavra)
+letras_digitadas = ''
+
+while erro < 6 and '_' in nova:
+    print(f"Essas foram as letras digitadas: {letras_digitadas}")
+    print(f"PALAVRA: {nova}")
+    letra = input('INFORME UMA LETRA: ').upper()
+    
+    if letra in letras_digitadas:
+        print("Você já digitou essa letra.")
+        continue
+
+    letras_digitadas += letra
+
+    if letra in palavra:
+        nova_temp = ''
+        for i in range(len(palavra)):
+            if palavra[i] == letra:
+                nova_temp += letra
+            else:
+                nova_temp += nova[i]
+        nova = nova_temp
+    else:
+        erro += 1
+        print(f'ERROU {erro} VEZ(es), VOCÊ POSSUI {6 - erro} CHANCES.')
+        print(f'O TEMA DA PALAVRA É {dica}, E A PALAVRA POSSUI {len(palavra)} LETRAS')
+
+    print()
+
+if erro == 6:
+    print('VOCÊ PERDEU, POIS ERROU 6 VEZES. A PALAVRA ERA:', palavra)
+else:
+    print(f"{'-'*15} PARABÉNS, VOCÊ DESCOBRIU A PALAVRA QUE É {nova} !! {'-'*15}")
