@@ -1,0 +1,53 @@
+import sys
+
+n = input("> Escolha uma opção (1: Criptografar, 2: Descriptografar, 0: Sair): ")
+
+if n == "1":
+    mensagem = input("Insira a mensagem que deseja criptografar: ")
+    chave = input("Forneça a chave para criptografia: ")
+    
+    mensagem_criptografada = ""
+    indice_chave = 0
+    
+    for char in mensagem:
+        if char.isalpha():
+            valor_mensagem = ord(char.upper()) - ord('A')
+            valor_chave = ord(chave[indice_chave % len(chave)].upper()) - ord('A')
+            
+            novo_valor = (valor_mensagem + valor_chave) % 26
+            novo_char = chr(novo_valor + ord('A'))
+            
+            mensagem_criptografada += novo_char
+            indice_chave += 1
+        else:
+            mensagem_criptografada += char
+    
+    print(f"A mensagem criptografada é: {mensagem_criptografada}")
+
+elif n == "2":
+    mensagem_criptografada = input("Digite a mensagem criptografada que deseja descriptografar: ")
+    chave = input("Forneça a chave para descriptografia: ")
+    
+    mensagem_descriptografada = ""
+    indice_chave = 0
+    
+    for char in mensagem_criptografada:
+        if char.isalpha():
+            valor_criptografado = ord(char.upper()) - ord('A')
+            valor_chave = ord(chave[indice_chave % len(chave)].upper()) - ord('A')
+            
+            novo_valor = (valor_criptografado - valor_chave + 26) % 26
+            novo_char = chr(novo_valor + ord('A'))
+            
+            mensagem_descriptografada += novo_char
+            indice_chave += 1
+        else:
+            mensagem_descriptografada += char
+    
+    print(f"A mensagem descriptografada é: {mensagem_descriptografada}")
+
+elif n == "0":
+    sys.exit()
+
+else:
+    print("Opção inválida.")
