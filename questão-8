@@ -1,0 +1,15 @@
+numero = int(input("Digite um número inteiro positivo: "))
+
+if numero <= 0:
+    print("O número deve ser um inteiro positivo.")
+else:
+    valor = 1 + 8 * numero
+    raiz = int(valor ** 0.5)
+    
+    if raiz * raiz == valor:
+        if (raiz - 1) % 2 == 0:
+            print(f"O número {numero} é um número triangular.")
+        else:
+            print(f"O número {numero} não é um número triangular.")
+    else:
+        print(f"O número {numero} não é um número triangular.")
