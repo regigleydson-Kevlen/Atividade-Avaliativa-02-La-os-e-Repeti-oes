@@ -1,0 +1,31 @@
+valor_inicial = int(input("valor inicial da P.A.: "))
+razao = int(input("razão da P.A.: "))
+
+quantidade_elementos = int(input("Digite o número de elementos da P.A.: "))
+
+if quantidade_elementos <= 0:
+    print("A quantidade de elementos deve ser um inteiro positivo.")
+else:
+    pa = [valor_inicial + i * razao for i in range(quantidade_elementos)]
+    
+    print("Os valores da P.A. são:")
+    for valor in pa:
+        print(valor)
+    
+    if razao == 0:
+        tipo_pa = "Constante"
+    elif razao > 0:
+        tipo_pa = "Crescente"
+    else:
+        tipo_pa = "Decrescente"
+    print(f"A P.A. é {tipo_pa}.")
+
+    soma_pa = sum(pa)
+    print(f"A soma dos elementos da P.A. é {soma_pa}.")
+
+    posicao = int(input("Digite a posição (n) do elemento da P.A.: "))
+    if posicao <= 0 or posicao > quantidade_elementos:
+        print("A posição deve ser um inteiro positivo dentro da quantidade de elementos.")
+    else:
+        elemento_n = valor_inicial + (posicao - 1) * razao
+        print(f"O valor do elemento na posição {posicao} é {elemento_n}.")
