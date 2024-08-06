@@ -1,0 +1,12 @@
+for i in range(1, 1000000):
+    if i % 2 == 0 or i % 5 == 0:  
+        soma_potencias_5 = 0
+        num = i
+        while num > 0:               
+            digito = num % 10                      
+            soma_potencias_5 += digito ** 5        
+            num //= 10           
+        if soma_potencias_5 == i:               
+            print(i)
+
+print('números menores que 1 milhão, múltiplos de 2 ou 5 que são escritos com soma das potências de 5 de seus dígitos.')
