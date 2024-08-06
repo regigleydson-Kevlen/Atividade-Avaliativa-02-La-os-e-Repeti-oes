@@ -1,0 +1,23 @@
+numero = int(input("Digite um número inteiro positivo: "))
+
+if numero <= 0:
+    print("O número deve ser um inteiro positivo.")
+else:
+    valor = numero
+    contagem_digitos = 0
+    while valor > 0:
+        valor //= 10
+        contagem_digitos += 1
+    valor_original = numero
+    soma = 0
+    valor = numero
+    
+    while valor > 0:
+        digito = valor % 10
+        soma += digito ** contagem_digitos
+        valor //= 10
+
+    if soma == numero:
+        print(f"O número {numero} é um número de Armstrong.")
+    else:
+        print(f"O número {numero} não é um número de Armstrong.")
