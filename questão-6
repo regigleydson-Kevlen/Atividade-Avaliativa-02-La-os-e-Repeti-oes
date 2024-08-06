@@ -1,0 +1,37 @@
+valor_inicial = float(input("valor inicial da P.G.: "))
+razao = float(input("razão da P.G.: "))
+
+quantidade_elementos = int(input("número de elementos da P.G.: "))
+
+if quantidade_elementos <= 0:
+    print("quantidade de elementos deve ser um inteiro positivo.")
+else:
+    pg = [valor_inicial * (razao ** i) for i in range(quantidade_elementos)]
+    
+    print("Os valores da P.G. são:")
+    for valor in pg:
+        print(valor)
+    
+    if razao == 1:
+        tipo_pg = "Constante"
+    elif razao == -1:
+        tipo_pg = "Oscilante"
+    elif razao > 1:
+        tipo_pg = "Crescente"
+    elif razao < -1:
+        tipo_pg = "Oscilante"
+    else:
+        tipo_pg = "Decrescente"
+
+    print(f"A P.G. é {tipo_pg}.")
+    
+    soma_pg = sum(pg)
+    print(f"soma dos elementos da P.G. é {soma_pg:.2f}.")
+    
+    posicao = int(input("Digite a posição (n) do elemento da P.G.: "))
+
+    if posicao <= 0 or posicao > quantidade_elementos:
+        print("posição deve ser um inteiro positivo dentro da quantidade de elementos.")
+    else:
+        elemento_n = valor_inicial * (razao ** (posicao - 1))
+        print(f"O valor do elemento na posição {posicao} é {elemento_n:.2f}.")
