@@ -1,0 +1,16 @@
+numero1 = int(input("primeiro número: "))
+numero2 = int(input("segundo número: "))
+
+if numero1 <= 0 or numero2 <= 0:
+    print("devem ser inteiros positivos.")
+else:
+    a = numero1
+    b = numero2
+    
+    while b != 0:
+        resto = a % b
+        a = b
+        b = resto
+    
+    resultado = a
+    print(f"O Máximo Divisor Comum entre {numero1} e {numero2} é {resultado}.")
