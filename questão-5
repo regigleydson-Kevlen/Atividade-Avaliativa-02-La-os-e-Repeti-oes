@@ -1,0 +1,13 @@
+numero = int(input("valor inteiro positivo: "))
+
+if numero <= 0:
+    print("valor deve ser um inteiro positivo.")
+else:
+    contagem_digitos = 0
+    valor = numero
+
+    while valor > 0:
+        valor //= 10
+        contagem_digitos += 1
+
+    print(f"O valor informado tem {contagem_digitos} dígitos.")
