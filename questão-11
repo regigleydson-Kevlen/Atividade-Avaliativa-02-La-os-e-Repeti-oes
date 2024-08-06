@@ -1,0 +1,84 @@
+import sys
+
+x = float(input('Informe a coordenada inicial X do robô: '))
+y = float(input('Informe a coordenada inicial Y do robô: '))
+posicao = input('Informe a sequência de movimentos do robô: ').upper()
+
+xf = 0
+yf = 0
+movimentos_validos = ''
+
+for i in posicao:
+    if i == 'U':
+        yf += 1
+        movimentos_validos += i
+    elif i == 'D':
+        yf -= 1
+        movimentos_validos += i
+    elif i == 'R':
+        xf += 1
+        movimentos_validos += i
+    elif i == 'L':
+        xf -= 1
+        movimentos_validos += i
+    elif i == 'O':
+        xf -= 1
+        yf += 1
+        movimentos_validos += i
+    elif i == 'N':
+        xf += 1
+        yf += 1
+        movimentos_validos += i
+    elif i == 'E':
+        xf += 1
+        yf -= 1
+        movimentos_validos += i
+    elif i == 'W':
+        xf -= 1
+        yf -= 1
+        movimentos_validos += i
+
+x_final = x + xf
+y_final = y + yf
+
+if x == 0 and y == 0:
+    quadrante_inicial = "ORIGEM"
+elif x == 0:
+    quadrante_inicial = "EIXO Y"
+elif y == 0:
+    quadrante_inicial = "EIXO X"
+elif x > 0 and y > 0:
+    quadrante_inicial = "1º QUADRANTE"
+elif x < 0 and y > 0:
+    quadrante_inicial = "2º QUADRANTE"
+elif x < 0 and y < 0:
+    quadrante_inicial = "3º QUADRANTE"
+else:
+    quadrante_inicial = "4º QUADRANTE"
+
+if x_final == 0 and y_final == 0:
+    quadrante_final = "ORIGEM"
+elif x_final == 0:
+    quadrante_final = "EIXO Y"
+elif y_final == 0:
+    quadrante_final = "EIXO X"
+elif x_final > 0 and y_final > 0:
+    quadrante_final = "1º QUADRANTE"
+elif x_final < 0 and y_final > 0:
+    quadrante_final = "2º QUADRANTE"
+elif x_final < 0 and y_final < 0:
+    quadrante_final = "3º QUADRANTE"
+else:
+    quadrante_final = "4º QUADRANTE"
+
+print(f"{'-'*15} A POSIÇÃO INICIAL {'-'*15}")
+print(f"   COORDENADA X: {x} COORDENADA Y: {y}")
+print(f"   O ROBÔ COMEÇOU NO {quadrante_inicial}")
+
+print(f"{'-'*15} A POSIÇÃO FINAL {'-'*15}")
+print(f"   COORDENADA X: {x_final} COORDENADA Y: {y_final}")
+print(f"   O ROBÔ TERMINOU NO {quadrante_final}")
+
+print(f"{'-'*15} MOVIMENTOS DO ROBÔ {'-'*15}")
+print(f"   TEVE {len(movimentos_validos)} MOVIMENTO(S) EXECUTADOS AO TODO")
+print(f"   ESSES FORAM OS MOVIMENTOS VÁLIDOS EXECUTADOS: {movimentos_validos}")
